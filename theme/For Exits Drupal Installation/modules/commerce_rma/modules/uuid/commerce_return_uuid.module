@@ -1,0 +1,36 @@
+  <?php
+
+/**
+ * @file
+ * Adds universally unique identifiers support to Drupal Commerce Return.
+ */
+
+/**
+ * Implements hook_entity_info_alter().
+ */
+function commerce_return_uuid_entity_info_alter(&$entity_info) {
+  if (isset($entity_info['commerce_return'])) {
+    $entity_info['commerce_return']['uuid'] = TRUE;
+    $entity_info['commerce_return']['entity keys']['uuid'] = 'uuid';
+    $entity_info['commerce_return']['entity keys']['revision uuid'] = 'vuuid';
+  }
+
+}
+
+/**
+ * Implements hook_entity_uuid_load().
+ */
+function commerce_return_uuid_entity_uuid_load(&$entities, $entity_type) {
+  if ($entity_type == 'commerce_return') {
+    entity_property_id_to_uuid($entities, 'user', 'uid');
+  }
+}
+
+/**
+ * Implements hook_entity_uuid_presave().
+ */
+function commerce_return_uuid_entity_uuid_presave(&$entity, $entity_type) {
+  if ($entity_type == 'commerce_return') {
+    entity_property_uuid_to_id($entities, 'user', 'uid');
+  }
+}

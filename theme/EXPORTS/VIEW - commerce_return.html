@@ -1,0 +1,240 @@
+$view = new view();
+$view->name = 'commerce_return_overview';
+$view->description = 'Display a list of returns';
+$view->tag = 'commerce';
+$view->base_table = 'commerce_return';
+$view->human_name = 'Returns';
+$view->core = 7;
+$view->api_version = '3.0';
+$view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+/* Display: Master */
+$handler = $view->new_display('default', 'Master', 'default');
+$handler->display->display_options['css_class'] = 'commerce-return-overview-form';
+$handler->display->display_options['use_ajax'] = TRUE;
+$handler->display->display_options['use_more_always'] = FALSE;
+$handler->display->display_options['access']['type'] = 'none';
+$handler->display->display_options['cache']['type'] = 'none';
+$handler->display->display_options['query']['type'] = 'views_query';
+$handler->display->display_options['exposed_form']['type'] = 'basic';
+$handler->display->display_options['pager']['type'] = 'full';
+$handler->display->display_options['style_plugin'] = 'table';
+$handler->display->display_options['style_options']['columns'] = array(
+  'return_id' => 'return_id',
+  'return_number' => 'return_number',
+  'commerce_order_reference' => 'commerce_order_reference',
+  'name' => 'name',
+  'changed' => 'changed',
+  'commerce_customer_address_name_line' => 'commerce_customer_address_name_line',
+  'commerce_return_total' => 'commerce_return_total',
+  'status' => 'status',
+  'operations_dropbutton' => 'operations_dropbutton',
+);
+$handler->display->display_options['style_options']['default'] = '-1';
+$handler->display->display_options['style_options']['info'] = array(
+  'return_id' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'empty_column' => 0,
+  ),
+  'return_number' => array(
+    'sortable' => 1,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'empty_column' => 0,
+  ),
+  'commerce_order_reference' => array(
+    'sortable' => 1,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'empty_column' => 0,
+  ),
+  'name' => array(
+    'sortable' => 1,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'empty_column' => 0,
+  ),
+  'changed' => array(
+    'sortable' => 1,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'empty_column' => 0,
+  ),
+  'commerce_customer_address_name_line' => array(
+    'sortable' => 1,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'empty_column' => 0,
+  ),
+  'commerce_return_total' => array(
+    'sortable' => 1,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'empty_column' => 0,
+  ),
+  'status' => array(
+    'sortable' => 1,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'empty_column' => 0,
+  ),
+  'operations_dropbutton' => array(
+    'align' => '',
+    'separator' => '',
+    'empty_column' => 0,
+  ),
+);
+$handler->display->display_options['style_options']['empty_table'] = TRUE;
+/* No results behavior: Global: Text area */
+$handler->display->display_options['empty']['area']['id'] = 'area';
+$handler->display->display_options['empty']['area']['table'] = 'views';
+$handler->display->display_options['empty']['area']['field'] = 'area';
+$handler->display->display_options['empty']['area']['empty'] = TRUE;
+$handler->display->display_options['empty']['area']['content'] = 'No returns found. Please reach an order\'s edit page in order to add a new return.';
+$handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+/* Relationship: Commerce Return: Referenced customer profile */
+$handler->display->display_options['relationships']['commerce_customer_rma_profile_id']['id'] = 'commerce_customer_rma_profile_id';
+$handler->display->display_options['relationships']['commerce_customer_rma_profile_id']['table'] = 'field_data_commerce_customer_rma';
+$handler->display->display_options['relationships']['commerce_customer_rma_profile_id']['field'] = 'commerce_customer_rma_profile_id';
+/* Relationship: Commerce Return: Owner */
+$handler->display->display_options['relationships']['uid']['id'] = 'uid';
+$handler->display->display_options['relationships']['uid']['table'] = 'commerce_return';
+$handler->display->display_options['relationships']['uid']['field'] = 'uid';
+/* Field: Commerce Return: Return ID */
+$handler->display->display_options['fields']['return_id']['id'] = 'return_id';
+$handler->display->display_options['fields']['return_id']['table'] = 'commerce_return';
+$handler->display->display_options['fields']['return_id']['field'] = 'return_id';
+$handler->display->display_options['fields']['return_id']['label'] = '';
+$handler->display->display_options['fields']['return_id']['exclude'] = TRUE;
+$handler->display->display_options['fields']['return_id']['element_label_colon'] = FALSE;
+$handler->display->display_options['fields']['return_id']['separator'] = '';
+/* Field: Commerce Return: Return number */
+$handler->display->display_options['fields']['return_number']['id'] = 'return_number';
+$handler->display->display_options['fields']['return_number']['table'] = 'commerce_return';
+$handler->display->display_options['fields']['return_number']['field'] = 'return_number';
+$handler->display->display_options['fields']['return_number']['alter']['alter_text'] = TRUE;
+$handler->display->display_options['fields']['return_number']['alter']['text'] = 'Return [return_number]';
+$handler->display->display_options['fields']['return_number']['alter']['make_link'] = TRUE;
+$handler->display->display_options['fields']['return_number']['alter']['path'] = 'admin/commerce/store/returns/[return_id]/view';
+$handler->display->display_options['fields']['return_number']['alter']['absolute'] = TRUE;
+$handler->display->display_options['fields']['return_number']['alter']['alt'] = 'Return [return_number]';
+/* Field: Commerce Return: Order Reference */
+$handler->display->display_options['fields']['commerce_order_reference']['id'] = 'commerce_order_reference';
+$handler->display->display_options['fields']['commerce_order_reference']['table'] = 'field_data_commerce_order_reference';
+$handler->display->display_options['fields']['commerce_order_reference']['field'] = 'commerce_order_reference';
+$handler->display->display_options['fields']['commerce_order_reference']['label'] = 'Order Id';
+$handler->display->display_options['fields']['commerce_order_reference']['alter']['make_link'] = TRUE;
+$handler->display->display_options['fields']['commerce_order_reference']['alter']['path'] = 'admin/commerce/orders/[commerce_order_reference-target_id]';
+$handler->display->display_options['fields']['commerce_order_reference']['settings'] = array(
+  'link' => 0,
+);
+/* Field: User: Name */
+$handler->display->display_options['fields']['name']['id'] = 'name';
+$handler->display->display_options['fields']['name']['table'] = 'users';
+$handler->display->display_options['fields']['name']['field'] = 'name';
+$handler->display->display_options['fields']['name']['relationship'] = 'uid';
+$handler->display->display_options['fields']['name']['label'] = 'Owner';
+/* Field: Commerce Return: Date changed */
+$handler->display->display_options['fields']['changed']['id'] = 'changed';
+$handler->display->display_options['fields']['changed']['table'] = 'commerce_return';
+$handler->display->display_options['fields']['changed']['field'] = 'changed';
+$handler->display->display_options['fields']['changed']['label'] = 'Updated';
+$handler->display->display_options['fields']['changed']['date_format'] = 'medium';
+/* Field: Commerce Customer profile: Address - Full name */
+$handler->display->display_options['fields']['commerce_customer_address_name_line']['id'] = 'commerce_customer_address_name_line';
+$handler->display->display_options['fields']['commerce_customer_address_name_line']['table'] = 'field_data_commerce_customer_address';
+$handler->display->display_options['fields']['commerce_customer_address_name_line']['field'] = 'commerce_customer_address_name_line';
+$handler->display->display_options['fields']['commerce_customer_address_name_line']['relationship'] = 'commerce_customer_rma_profile_id';
+$handler->display->display_options['fields']['commerce_customer_address_name_line']['label'] = 'Name';
+/* Field: Commerce Return: Total to refund */
+$handler->display->display_options['fields']['commerce_return_total']['id'] = 'commerce_return_total';
+$handler->display->display_options['fields']['commerce_return_total']['table'] = 'field_data_commerce_return_total';
+$handler->display->display_options['fields']['commerce_return_total']['field'] = 'commerce_return_total';
+$handler->display->display_options['fields']['commerce_return_total']['label'] = 'Total';
+$handler->display->display_options['fields']['commerce_return_total']['click_sort_column'] = 'amount';
+$handler->display->display_options['fields']['commerce_return_total']['settings'] = array(
+  'calculation' => FALSE,
+);
+/* Field: Commerce Return: Status */
+$handler->display->display_options['fields']['status']['id'] = 'status';
+$handler->display->display_options['fields']['status']['table'] = 'commerce_return';
+$handler->display->display_options['fields']['status']['field'] = 'status';
+/* Field: Commerce Return: Operations */
+$handler->display->display_options['fields']['operations_dropbutton']['id'] = 'operations_dropbutton';
+$handler->display->display_options['fields']['operations_dropbutton']['table'] = 'commerce_return';
+$handler->display->display_options['fields']['operations_dropbutton']['field'] = 'operations_dropbutton';
+/* Filter criterion: Commerce Return: Type */
+$handler->display->display_options['filters']['type']['id'] = 'type';
+$handler->display->display_options['filters']['type']['table'] = 'commerce_return';
+$handler->display->display_options['filters']['type']['field'] = 'type';
+$handler->display->display_options['filters']['type']['value'] = array(
+  'commerce_return' => 'commerce_return',
+);
+/* Filter criterion: Commerce Return: Return number */
+$handler->display->display_options['filters']['return_number']['id'] = 'return_number';
+$handler->display->display_options['filters']['return_number']['table'] = 'commerce_return';
+$handler->display->display_options['filters']['return_number']['field'] = 'return_number';
+$handler->display->display_options['filters']['return_number']['exposed'] = TRUE;
+$handler->display->display_options['filters']['return_number']['expose']['operator_id'] = 'return_number_op';
+$handler->display->display_options['filters']['return_number']['expose']['label'] = 'Return number';
+$handler->display->display_options['filters']['return_number']['expose']['operator'] = 'return_number_op';
+$handler->display->display_options['filters']['return_number']['expose']['identifier'] = 'return_number';
+$handler->display->display_options['filters']['return_number']['expose']['remember_roles'] = array(
+  2 => '2',
+  1 => 0,
+  3 => 0,
+);
+$handler->display->display_options['filters']['return_number']['group_info']['label'] = 'Return number';
+$handler->display->display_options['filters']['return_number']['group_info']['identifier'] = 'return_number';
+$handler->display->display_options['filters']['return_number']['group_info']['remember'] = FALSE;
+$handler->display->display_options['filters']['return_number']['group_info']['group_items'] = array(
+  1 => array(),
+  2 => array(),
+  3 => array(),
+);
+/* Filter criterion: Commerce Return: Status */
+$handler->display->display_options['filters']['status']['id'] = 'status';
+$handler->display->display_options['filters']['status']['table'] = 'commerce_return';
+$handler->display->display_options['filters']['status']['field'] = 'status';
+$handler->display->display_options['filters']['status']['exposed'] = TRUE;
+$handler->display->display_options['filters']['status']['expose']['operator_id'] = 'status_op';
+$handler->display->display_options['filters']['status']['expose']['label'] = 'Status';
+$handler->display->display_options['filters']['status']['expose']['operator'] = 'status_op';
+$handler->display->display_options['filters']['status']['expose']['identifier'] = 'status';
+$handler->display->display_options['filters']['status']['expose']['remember_roles'] = array(
+  2 => '2',
+  1 => 0,
+  3 => 0,
+);
+/* Filter criterion: Commerce Return: Order Reference (commerce_order_reference) */
+$handler->display->display_options['filters']['commerce_order_reference_target_id']['id'] = 'commerce_order_reference_target_id';
+$handler->display->display_options['filters']['commerce_order_reference_target_id']['table'] = 'field_data_commerce_order_reference';
+$handler->display->display_options['filters']['commerce_order_reference_target_id']['field'] = 'commerce_order_reference_target_id';
+$handler->display->display_options['filters']['commerce_order_reference_target_id']['exposed'] = TRUE;
+$handler->display->display_options['filters']['commerce_order_reference_target_id']['expose']['operator_id'] = 'commerce_order_reference_target_id_op';
+$handler->display->display_options['filters']['commerce_order_reference_target_id']['expose']['label'] = 'Order ID';
+$handler->display->display_options['filters']['commerce_order_reference_target_id']['expose']['operator'] = 'commerce_order_reference_target_id_op';
+$handler->display->display_options['filters']['commerce_order_reference_target_id']['expose']['identifier'] = 'commerce_order_reference_target_id';
+$handler->display->display_options['filters']['commerce_order_reference_target_id']['expose']['remember_roles'] = array(
+  2 => '2',
+  1 => 0,
+  3 => 0,
+);
+$handler->display->display_options['filters']['commerce_order_reference_target_id']['group_info']['label'] = 'Order Reference (commerce_order_reference)';
+$handler->display->display_options['filters']['commerce_order_reference_target_id']['group_info']['identifier'] = 'commerce_order_reference_target_id';
+$handler->display->display_options['filters']['commerce_order_reference_target_id']['group_info']['remember'] = FALSE;
+$handler->display->display_options['filters']['commerce_order_reference_target_id']['group_info']['group_items'] = array(
+  1 => array(),
+  2 => array(),
+  3 => array(),
+);

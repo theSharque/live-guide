@@ -1,0 +1,75 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Commerce RMA module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function commerce_rma_install() {
+  // At module installation, we are inserting a block providing store general
+  // information on how to return products. This block is assigned by default
+  // to "content" region.
+  $query = db_insert('block')->fields(
+    array(
+      'module',
+      'delta',
+      'theme',
+      'status',
+      'weight',
+      'region',
+      'pages',
+      'cache'
+    )
+  );
+  $query->values(
+    array(
+      'module' => 'commerce_rma',
+      'delta' => 'return_instructions',
+      'theme' => variable_get('theme_default'),
+      'status' => BLOCK_VISIBILITY_NOTLISTED,
+      'weight' => 5,
+      'region' => 'content',
+      'pages' => "user/*/returns\nuser/*/orders/*/return/review\nuser/*/returns/*",
+      'cache' => DRUPAL_CACHE_GLOBAL,
+    )
+  );
+  $query->execute();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function commerce_rma_uninstall() {
+  // Drop the global variables exposed by this module.
+  variable_del('return_period_unit');
+  variable_del('return_period_granularity');
+  variable_del('return_order_status');
+  variable_del('commerce_return_store_address');
+  variable_del('commerce_return_store_info');
+}
+
+/**
+ * Make sure the return_instructions block is assigned to correct theme region.
+ */
+function commerce_rma_update_7200() {
+  db_update('block')
+    ->fields(array('region' => 'content'))
+    ->condition('delta', 'return-instructions')
+    ->condition('module', 'commerce_rma')
+    ->execute();
+}
+
+/**
+ * Change existing return_order_status variable as array.
+ */
+function commerce_rma_update_7201() {
+  $return_status = variable_get('return_order_status');
+  if (!empty($return_status) && is_string($return_status)) {
+    variable_set('return_order_status', array($return_status));
+    return t('Existing return_order_status variable has been converted to array.');
+  }
+  return t('Nothing has been changed.');
+}

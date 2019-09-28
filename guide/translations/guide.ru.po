@@ -1,0 +1,396 @@
+# $Id$
+#
+# Russian translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  deal.inc: n/a
+#  excursion.inc: n/a
+#  user.inc: n/a
+#  guide.module: n/a
+#  guide.info: n/a
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2016-05-03 13:41+0300\n"
+"PO-Revision-Date: 2016-05-03 13:41+0300\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Russian <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=((((n%10)==1)&&((n%100)!=11))?(0):(((((n%10)>=2)&&((n%10)<=4))&&(((n%100)<10)||((n%100)>=20)))?(1):2));\n"
+
+#: deal.inc:7;233
+msgid "Canceled by guide"
+msgstr "Отменено гидом"
+
+#: deal.inc:8;234
+msgid "Canceled by tourist"
+msgstr "Отменено туристом"
+
+#: deal.inc:9;235
+msgid "Declined"
+msgstr "Отклонено"
+
+#: deal.inc:10;236
+msgid "Waiting for accept"
+msgstr "Ожидает подтверждения"
+
+#: deal.inc:11;237
+msgid "Accepted"
+msgstr "Подтверждено"
+
+#: deal.inc:12;238
+msgid "Finished"
+msgstr "Завершено"
+
+#: deal.inc:25
+msgid "Excursion that you guide"
+msgstr "Экскурсии которые вы проводите"
+
+#: deal.inc:33;65;101;204 excursion.inc:162;265;417;670
+msgid "Title"
+msgstr "Заголовок"
+
+#: deal.inc:33;65;131;222 excursion.inc:240;376;534;754
+msgid "Price"
+msgstr "Цена"
+
+#: deal.inc:33;65
+msgid "Date"
+msgstr "Дата"
+
+#: deal.inc:33;65;243 excursion.inc:773
+msgid "Status"
+msgstr "Статус"
+
+#: deal.inc:57
+msgid "Excursion you take"
+msgstr "Экскурсии которые вы выбрали"
+
+#: deal.inc:107;210 excursion.inc:192;273;426;676
+msgid "Description"
+msgstr "Описание"
+
+#: deal.inc:113 excursion.inc:61;198;322;479;712 user.inc:37;102;173
+msgid "Country"
+msgstr "Страна"
+
+#: deal.inc:119 excursion.inc:68;204;331;488;718 user.inc:43;110;182
+msgid "City"
+msgstr "Город"
+
+#: deal.inc:125 excursion.inc:216;347;504;730
+msgid "Duration"
+msgstr "Продолжительность"
+
+#: deal.inc:137;216
+msgid "Excursion date"
+msgstr "Дата экскурсии"
+
+#: deal.inc:138
+msgid "Select excursion date"
+msgstr "Выбирете дату экскурсии"
+
+#: deal.inc:144;228
+msgid "Comment"
+msgstr "Комментарий"
+
+#: deal.inc:145
+msgid "You can describe everthing you want. This comment will be sent to your guide with date for approve."
+msgstr "Вы можете описать все, что хотите. Этот комментарий будет отправлен вашему гиду вместе с датой экскурсии."
+
+#: deal.inc:150
+msgid "Send order"
+msgstr "Отправить заказ"
+
+#: deal.inc:250;271
+msgid "Accept"
+msgstr "Подтвердить"
+
+#: deal.inc:255;284
+msgid "Decline"
+msgstr "Отклонить"
+
+#: deal.inc:260;297
+msgid "Cancel"
+msgstr "Отмена"
+
+#: excursion.inc:55
+msgid "Filters"
+msgstr "Фильтры"
+
+#: excursion.inc:76
+msgid "Maximum price"
+msgstr "Максимальная цена"
+
+#: excursion.inc:78;85;378;537
+msgid "Set your price in US$"
+msgstr "Установите цену в US$"
+
+#: excursion.inc:83
+msgid "Minimum price"
+msgstr "Минимальная цена"
+
+#: excursion.inc:89;210;211;340;497;724;725
+msgid "Individual"
+msgstr "Индивидуальная"
+
+#: excursion.inc:91;343;500
+msgid "Check this if excursion for is individual and tourists not a part of group."
+msgstr "Отметьте данный пунк, если экскурсия является индивидуальной, и туристы не часть другой группы."
+
+#: excursion.inc:95;222;354;512;736
+msgid "Transfer from and to hotel"
+msgstr "Трансфер из отеля и обратно"
+
+#: excursion.inc:98;357;515
+msgid "Check this if you pickup tourist from hotel and drop back after excursion."
+msgstr "Отметьте этот пункт, если вы заберете туристов возле отеля и доставите их обратно после экскурсии."
+
+#: excursion.inc:102;228;229;361;519;742;743
+msgid "With food"
+msgstr "С едой"
+
+#: excursion.inc:105;364;522
+msgid "Check this if breakfast, dinner or any other food available during the excursion. Describe in description."
+msgstr "Отметьте этот пункт, если экскурсия включает в себя завтрак, обед или ужин. Подробности можно указать в описании экскурсии."
+
+#: excursion.inc:109;234;368;526;748
+msgid "With free drinks"
+msgstr "Песплатные напитки"
+
+#: excursion.inc:112;371;529
+msgid "Check this if any type of drinks available during the excursion. Describe in description."
+msgstr "Отметьте этот пункт, если на экскурсии будут предложены бесплатные напитки. Подробности можно указать в описании экскурсии."
+
+#: excursion.inc:117
+msgid "Filter"
+msgstr "Фильтр"
+
+#: excursion.inc:122;135
+msgid "Clear"
+msgstr "Очистить"
+
+#: excursion.inc:211;725
+msgid "Group"
+msgstr "Группа"
+
+#: excursion.inc:223;737
+msgid "With transfer"
+msgstr "С трансфером"
+
+#: excursion.inc:223;737
+msgid "No transfer"
+msgstr "Без трансфера"
+
+#: excursion.inc:229;743
+msgid "No food"
+msgstr "Без еды"
+
+#: excursion.inc:235;749
+msgid "With drinks"
+msgstr "С напитками"
+
+#: excursion.inc:235;749
+msgid "No drinks"
+msgstr "Без напитков"
+
+#: excursion.inc:246;383;542;760
+msgid "Tags"
+msgstr "Теги"
+
+#: excursion.inc:267;420
+msgid "Short name of excursion maximum 128 letters"
+msgstr "Краткое наименование экскурсии, максимум 128 символов"
+
+#: excursion.inc:275;429
+msgid "Describe your excursion as good as you can. Minimum is 400 letters"
+msgstr "Опишите экскурсию более подробно. Миниммум 400 символов."
+
+#: excursion.inc:281;435;685;695;705
+msgid "Image 1"
+msgstr "Рисунок 1"
+
+#: excursion.inc:295;450
+msgid "Image 2"
+msgstr "Рисунок 2"
+
+#: excursion.inc:309;465
+msgid "Image 3"
+msgstr "Рисунок 3"
+
+#: excursion.inc:350;508
+msgid "Duration of excursion in hours or days."
+msgstr "Продолжительность экскурсии в часах или днях"
+
+#: excursion.inc:406
+msgid "Warning"
+msgstr "Предупреждение"
+
+#: excursion.inc:407
+msgid "After you edit excursion it change status to unmoderated! It's desapear from all excursion until moderation!"
+msgstr "После внесения изменений статус экскурсии изменится на немодерированный! До модерации экскурсия будет недоступна!"
+
+#: excursion.inc:767;788 guide.module:137
+msgid "Edit excursion"
+msgstr "Изменить экскурсию"
+
+#: excursion.inc:774
+msgid "Already ordered"
+msgstr "Уже заказана"
+
+#: excursion.inc:779 guide.module:178
+msgid "Order excursion"
+msgstr "Заказать экскурсию"
+
+#: user.inc:10;71;138;291
+msgid "Login"
+msgstr "Имя пользователя"
+
+#: user.inc:16;77;145
+msgid "Firstname"
+msgstr "Имя"
+
+#: user.inc:22;83;152
+msgid "Lastname"
+msgstr "Фамилия"
+
+#: user.inc:31;89;159
+msgid "Photo"
+msgstr "Фотография"
+
+#: user.inc:50;119;192
+msgid "Contact e-mail"
+msgstr "Контактный адресс электронной почты"
+
+#: user.inc:56;125;199
+msgid "PayPal e-mail"
+msgstr "Адресс электронной почты в системе PayPal"
+
+#: user.inc:221
+msgid "E-mail is incorrect."
+msgstr "Адресс контактной электронной почты не правильный"
+
+#: user.inc:226
+msgid "PayPal e-mail is incorrect."
+msgstr "Адресс PayPal электронной почты не правильный"
+
+#: user.inc:311
+msgid "Login or password incorrect."
+msgstr "Логин или пароль неверен."
+
+#: guide.module:9
+msgid "Anonimous user - available for registration"
+msgstr "Анонимный пользователь - доступна регистрация"
+
+#: guide.module:13
+msgid "Guide of live guide system"
+msgstr "Гид системы live guide"
+
+#: guide.module:17
+msgid "Moderator of guide system"
+msgstr "Модератор системы live guide"
+
+#: guide.module:21
+msgid "Administrator of guide system"
+msgstr "Администратор системы live guide"
+
+#: guide.module:35;36;45
+msgid "Register"
+msgstr "Регистрация"
+
+#: guide.module:46
+msgid "Register new guide."
+msgstr "Регистрация нового гида"
+
+#: guide.module:58;68
+msgid "Profile"
+msgstr "Профиль"
+
+#: guide.module:59;69
+msgid "User profile"
+msgstr "Профиль пользователя"
+
+#: guide.module:80
+msgid "Edit profile"
+msgstr "Редактировать профиль"
+
+#: guide.module:81
+msgid "Edit guide data."
+msgstr "Редактировать данные"
+
+#: guide.module:92;93
+msgid "Log in"
+msgstr "Войти"
+
+#: guide.module:104
+msgid "Excursions"
+msgstr "Экскурсии"
+
+#: guide.module:105
+msgid "Guide menu"
+msgstr "Меню гида"
+
+#: guide.module:114
+msgid "Excursions list"
+msgstr "Список экскурсий"
+
+#: guide.module:115
+msgid "Guide page with status"
+msgstr "Страница статусов"
+
+#: guide.module:126
+msgid "Add excursion"
+msgstr "Добавить экскурсию"
+
+#: guide.module:127
+msgid "Add new excursion."
+msgstr "Добавить новую экскурсию."
+
+#: guide.module:138
+msgid "Edit selected excursion."
+msgstr "Редактировать выбранную экскурсию"
+
+#: guide.module:148
+msgid "View excursion"
+msgstr "Смотреть экскурсию"
+
+#: guide.module:149
+msgid "View selected excursion."
+msgstr "Смотреть выбранную экскурсию"
+
+#: guide.module:166
+msgid "Your orders"
+msgstr "Ваши заказы"
+
+#: guide.module:167
+msgid "Orders on your account"
+msgstr "Заказы на вашем аккаунте"
+
+#: guide.module:179
+msgid "Order excursion by tourist."
+msgstr "Заказать экскурсию от туриста"
+
+#: guide.module:190
+msgid "Accept excursion"
+msgstr "Подтвердить экскурсию"
+
+#: guide.module:191
+msgid "Accept excursion by guide."
+msgstr "Подтвердить экскурсию от гида"
+
+#: guide.info:0
+msgid "Live guide"
+msgstr "Живой Гид"
+
+#: guide.info:0
+msgid "Live guide system MVP version."
+msgstr "Система Live guide МЖВ версия"
+
+#: guide.info:0
+msgid "StartUp"
+msgstr "StartUp"
+

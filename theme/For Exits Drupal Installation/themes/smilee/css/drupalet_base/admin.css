@@ -1,0 +1,69 @@
+.form-radios{
+	width:100%;
+	float:left;
+	margin-top:60px!important;
+	clear:both;
+}
+.form-radios input[type=radio]{
+	margin-right:15px;
+	cursor: pointer;
+	background: #e1e1e1;
+}
+.form-radios .form-item{
+	width: 70px;
+	margin: 0 30px 90px 0!important;
+	float: left;
+}
+.form-radios .form-item label{
+	margin-top: -70px!important;
+	border: 2px solid #fff!important;
+	outline: 1px solid #ddd!important;
+	position: absolute!important;
+	display: block;
+	width: 70px;
+	height: 0px;
+	line-height: 30px;
+	padding-top: 70px!important;
+	cursor: pointer;
+	text-align: center;
+	color: #444;
+	border: 1px solid #fff;
+	outline: 2px solid #a3af7f;
+	font-weight: bold;
+	background:#333
+}
+.form-item label[for="edit-built-in-skins-grass-greencss"] { background: #64be33; }
+.form-item label[for="edit-built-in-skins-greencss"] { background: #2bba57; }
+.form-item label[for="edit-built-in-skins-turquoisecss"] { background: #2eafbb; }
+.form-item label[for="edit-built-in-skins-bluecss"] { background: #5489de; }
+.form-item label[for="edit-built-in-skins-klein-bluecss"] { background: #4874cd; }
+.form-item label[for="edit-built-in-skins-purplecss"] { background: #7e47da; }
+.form-item label[for="edit-built-in-skins-pinkcss"] { background: #ea5192; }
+.form-item label[for="edit-built-in-skins-redcss"] { background: #e34735; }
+.form-item label[for="edit-built-in-skins-orangecss"] { background: #ff6029; }
+
+
+.form-item label[for="edit-bg-patterns-"] { background: transparent; }
+
+
+.form-item label[for="edit-background-image-wood-patternpng"] { background: #eee url(../../images/pattern/wood_pattern.png) no-repeat center top; }
+.form-item label[for="edit-background-image-shatteredpng"] { background: #eee url(../../images/pattern/shattered.png) no-repeat center top; }
+.form-item label[for="edit-background-image-vichypng"] { background: #eee url(../../images/pattern/vichy.png) no-repeat center top; }
+.form-item label[for="edit-background-image-random-grey-variationspng"] { background: #eee url(../../images/pattern/random_grey_variations.png) no-repeat center top; }
+.form-item label[for="edit-background-image-irongrippng"] { background: #eee url(../../images/pattern/irongrip.png) no-repeat center top; }
+.form-item label[for="edit-background-image-gplaypatternpng"] { background: #eee url(../../images/pattern/gplaypattern.png) no-repeat center top;}
+
+.form-item label[for="edit-background-image-diamond-upholsterypng"] { background: #eee url(../../images/pattern/diamond_upholstery.png) no-repeat center top; }
+.form-item label[for="edit-background-image-denimpng"] { background: #eee url(../../images/pattern/denim.png) no-repeat center top; }
+.form-item label[for="edit-background-image-crissxcrosspng"] { background: #eee url(../../images/pattern/crissXcross.png) no-repeat center top; }
+.form-item label[for="edit-background-image-climpekpng"] { background: #eee url(../../images/pattern/climpek.png) no-repeat center top; }
+
+
+.form-radios .form-item-active label{
+	border: 1px solid #fff!important;
+	outline: 2px solid #a3af7f!important;
+	font-weight: bold!important;
+}
+.form-item .form-item{
+	padding:15px 0px!important;
+}

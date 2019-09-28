@@ -1,0 +1,6 @@
+name = Live guide
+description = Live guide system MVP version.
+package = StartUp
+version = 1.0dev
+core = 7.x
+

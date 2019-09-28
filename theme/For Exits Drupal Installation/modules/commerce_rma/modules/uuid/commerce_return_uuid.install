@@ -1,0 +1,61 @@
+<?php
+
+/**
+ * Include some helper functions for the Entity API.
+ */
+module_load_include('inc', 'uuid', 'uuid.entity');
+
+/**
+ * Implements hook_schema_alter().
+ */
+function commerce_return_uuid_schema_alter(&$schema = array()) {
+  $field = uuid_schema_field_definition();
+
+  // Alter the schema definition for the commerce_order entity type.
+  if (isset($schema['commerce_return'])) {
+    $schema['commerce_return']['fields']['uuid'] = $field;
+    $schema['commerce_return_revision']['fields']['vuuid'] = $field;
+  }
+}
+
+/**
+ * Implements hook_install().
+ */
+function commerce_return_uuid_install() {
+  $field = uuid_schema_field_definition();
+
+  // Add the uuid column for the commerce_customer_profile entity type.
+  if (db_table_exists('commerce_return')) {
+    if (!db_field_exists('commerce_return', 'uuid')) {
+      db_add_field('commerce_return', 'uuid', $field);
+      db_add_index('commerce_return', 'uuid', array('uuid'));
+    }
+
+    if (!db_field_exists('commerce_return_revision', 'vuuid')) {
+      db_add_field('commerce_return_revision', 'vuuid', $field);
+      db_add_index('commerce_return_revision', 'vuuid', array('vuuid'));
+    }
+  }
+
+  // Generate the missing UUIDs.
+  uuid_sync_all();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function commerce_return_uuid_uninstall() {
+  // Remove the uuid column for the commerce_customer_profile entity type.
+  if (db_table_exists('commerce_return')) {
+    if (db_field_exists('commerce_return', 'uuid')) {
+      db_drop_field('commerce_return', 'uuid');
+      db_drop_index('commerce_return', 'uuid');
+    }
+
+    if (db_field_exists('commerce_return_revision', 'vuuid')) {
+      db_drop_field('commerce_return_revision', 'vuuid');
+      db_drop_index('commerce_return_revision', 'vuuid');
+    }
+  }
+
+}

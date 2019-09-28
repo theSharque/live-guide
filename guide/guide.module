@@ -1,0 +1,399 @@
+<?php
+
+/**
+ * Implements hook_permission().
+ */
+function guide_permission() {
+  return array(
+    'unknown' => array(
+      'title' => t('Anonimous user - available for registration'),
+    ),
+
+    'guide user' => array(
+      'title' => t('Guide of live guide system'),
+    ),
+
+    'guide moderator' => array(
+      'title' => t('Moderator of guide system'),
+    ),
+
+    'guide admin' => array(
+      'title' => t('Administrator of guide system'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_cron().
+ */
+function guide_cron() {
+  db_update('deals')
+    ->fields( array(
+        'status' => 2,
+      )
+    )
+    ->where( 'status = 1 AND date < CURDATE()' )
+    ->execute();
+
+  db_update('deals')
+    ->fields( array(
+        'status' => -3,
+      )
+    )
+    ->where( 'status = 0 AND date < CURDATE()' )
+    ->execute();
+}
+
+/**
+ * Implements hook_menu().
+ */
+function guide_menu() {
+
+// User menu
+
+  // Register
+  $items['guide/user'] = array(
+    'title' => 'Register',
+    'description' => 'Register',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array( 'guide_user_edit' ),
+    'access callback' => 'guide_access',
+    'access arguments' => array('add'),
+    'file' => 'user.inc',
+  );
+
+  $items['guide/user/add'] = array(
+    'title' => 'Register',
+    'description' => 'Register new guide.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array( 'guide_user_edit' ),
+    'access callback' => 'guide_access',
+    'access arguments' => array('add'),
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => 0,
+    'file' => 'user.inc',
+  );
+
+  // View user, votes and personal statistics
+  $items['guide/profile'] = array(
+    'title' => 'Profile',
+    'description' => 'User profile',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array( 'guide_user' ),
+    'access callback' => 'guide_access',
+    'access arguments' => array('view'),
+    'file' => 'user.inc',
+  );
+
+  $items['guide/profile/view'] = array(
+    'title' => 'Profile',
+    'description' => 'User profile',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array( 'guide_user' ),
+    'access callback' => 'guide_access',
+    'access arguments' => array('view'),
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => 0,
+    'file' => 'user.inc',
+  );
+
+  $items['guide/profile/edit'] = array(
+    'title' => 'Edit profile',
+    'description' => 'Edit guide data.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array( 'guide_user_edit', false ),
+    'access callback' => 'guide_access',
+    'access arguments' => array('view'),
+    'weight' => 10,
+    'file' => 'user.inc',
+  );
+
+  // Login
+  $items['guide/login'] = array(
+    'title' => 'Log in',
+    'description' => 'Log in',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array( 'guide_user_login' ),
+    'access callback' => 'guide_access',
+    'access arguments' => array('add'),
+    'file' => 'user.inc',
+  );
+
+
+// Excursion menu
+  $items['excursion'] = array(
+    'title' => 'Excursions',
+    'description' => 'Guide menu',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array( 'guide_excursion_view' ),
+    'access arguments' => array('guide user'),
+    'file' => 'excursion.inc',
+  );
+
+  // View excursions with filters and orders
+  $items['excursion/list'] = array(
+    'title' => 'Excursions list',
+    'description' => 'Guide page with status',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array( 'guide_excursion_view' ),
+    'access arguments' => array('guide user'),
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => 0,
+    'file' => 'excursion.inc',
+  );
+
+  // View excursions with filters and orders
+  $items['excursion/my'] = array(
+    'title' => 'Excursions list',
+    'description' => 'Guide page with status',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array( 'guide_excursion_my' ),
+    'access arguments' => array('guide user'),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 0,
+    'file' => 'excursion.inc',
+  );
+
+  // New excursion
+  $items['excursion/add'] = array(
+    'title' => 'Add excursion',
+    'description' => 'Add new excursion.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array( 'guide_excursion_edit' ),
+    'access arguments' => array('guide user'),
+    'weight' => 10,
+    'file' => 'excursion.inc',
+  );
+
+  // Edit excursion
+  $items['excursion/%/edit'] = array(
+    'title' => 'Edit excursion',
+    'description' => 'Edit selected excursion.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array( 'guide_excursion_edit', 1 ),
+    'access arguments' => array('guide user'),
+    'weight' => 20,
+    'file' => 'excursion.inc',
+  );
+
+  // Page excursion with full description todo accept button!!!
+  $items['excursion/%/view'] = array(
+    'title' => 'Excursion description',
+    'description' => 'Excursion description',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array( 'guide_excursion_detail', 1 ),
+    'access arguments' => array('guide user'),
+    'weight' => 30,
+    'file' => 'excursion.inc',
+  );
+
+/*
+  // todo Block "Newest"
+  // todo Block "Best"
+*/
+
+// Deal module
+
+  // View deals
+  $items['excursion/orders'] = array(
+    'title' => 'Your orders',
+    'description' => 'Orders on your account',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array( 'order_list' ),
+    'access arguments' => array('guide user'),
+    'weight' => 0,
+    'file' => 'deal.inc',
+  );
+
+  // <<<<<<<<<<<<<<
+  // Tourist page take with calendar
+  $items['deal/%/order'] = array(
+    'title' => 'Order excursion',
+    'description' => 'Order excursion by tourist.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array( 'order_excursion', 1 ),
+    'access arguments' => array('guide user'),
+    'weight' => 10,
+    'file' => 'deal.inc',
+  );
+
+  // >>>>>>>>>>>>>>
+  // Guide page accept, decline, cancelation
+  $items['deal/%/status'] = array(
+    'title' => 'Accept excursion',
+    'description' => 'Accept excursion by guide.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array( 'status_excursion', 1 ),
+    'access arguments' => array('guide user'),
+    'weight' => 10,
+    'file' => 'deal.inc',
+  );
+
+// Moderator menu
+
+  $items['moderate'] = array(
+    'title' => 'Moderator',
+    'description' => 'Moderator page',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array( 'moderate_view' ),
+    'access arguments' => array('guide moderator'),
+    'file' => 'moderator.inc',
+  );
+
+  // View excursions with filters and orders
+  $items['moderate/view'] = array(
+    'title' => 'Moderator',
+    'description' => 'Moderator page',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array( 'moderate_view' ),
+    'access arguments' => array('guide moderator'),
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => 0,
+    'file' => 'moderator.inc',
+  );
+
+  // Page with description and edit of excursion (accept/decline)
+  $items['moderate/%/excursion'] = array(
+    'title' => 'Moderate excursion',
+    'description' => 'Approve excursion detail.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array( 'approve_excursion', 1 ),
+    'access arguments' => array('guide moderator'),
+    'weight' => 10,
+    'file' => 'moderator.inc',
+  );
+
+/*
+
+
+// Administrator
+
+  $items['guid_admin'] = array(
+    'title' => 'Guide admin',
+    'description' => 'Users statistic page',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array( 'admin_users_view' ),
+    'access arguments' => array('guide admin'),
+    'file' => 'admin.inc',
+  );
+
+  // All users (statistics with grow)
+  $items['guid_admin/users'] = array(
+    'title' => 'Admin users',
+    'description' => 'Users statistic page',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array( 'admin_users_view' ),
+    'access arguments' => array('guide admin'),
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => 0,
+    'file' => 'admin.inc',
+  );
+
+  // All excursions
+  $items['guid_admin/excursion'] = array(
+    'title' => 'Admin excursions',
+    'description' => 'Excursion statistic page',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array( 'admin_excursion_view' ),
+    'access arguments' => array('guide admin'),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 10,
+    'file' => 'admin.inc',
+  );
+
+  // All accept
+  $items['guid_admin/accept'] = array(
+    'title' => 'Admin accept statistic',
+    'description' => 'Accept statistic page',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array( 'admin_accept_view' ),
+    'access arguments' => array('guide admin'),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 20,
+    'file' => 'admin.inc',
+  );
+
+  // All searching
+  $items['guid_admin/statistics'] = array(
+    'title' => 'Admin statistic',
+    'description' => 'Statistic page',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array( 'admin_stat_view' ),
+    'access arguments' => array('guide admin'),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 30,
+    'file' => 'admin.inc',
+  );
+
+  // All pays (by region)
+  $items['guid_admin/pays'] = array(
+    'title' => 'Admin pays statistic',
+    'description' => 'Pays page',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array( 'admin_pays_view' ),
+    'access arguments' => array('guide admin'),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 40,
+    'file' => 'admin.inc',
+  );
+*/
+  return $items;
+}
+
+function guide_access( $func ) {
+  global $user;
+
+  if( $func == 'view' && $user->uid != 0 ) {
+    return true;
+  }
+
+  if( $func == 'add' && $user->uid == 0 ) {
+    return true;
+  }
+
+  return false;
+}
+
+function guide_mail( $key, &$message, $params ) {
+  switch( $params['type'] ) {
+    case 'excursion_g_order' :
+      $subj = t( 'You have new order for excursion @name', array( '@name' => $params['name'] ) );
+      $body = t( "Hello, congratulation!\n\nYour excursion \"@name\" choosed by tourist, please view order and approve it as soon as possible. Tourist leave comment for you: @comment.\n\nAdministration", array( '@name' => $params['name'], '@comment' => $params['comment'] ) );
+      break;
+
+    case 'excursion_t_order' :
+      $subj = t( 'You order an excursion: @name.', array( '@name' => $params['name'] ) );
+      $body = t( "Hello, you guide already informed about your order!\n\nAs soon as it confirmed we send you detail information.\nYou order \"@name\"\nWith comments: @comment\n\nAdministration", array( '@name' => $params['name'], '@comment' => $params['comment'] ) );
+      break;
+
+    case 'excursion_g_accept':
+      $subj = t( 'Your excursion @name is accepted', array( '@name' => $params['name'] ) );
+      $body = t( "Hello, congratulation!\n\nYour excursion \"@name\" accepted by guide.\n: @comment.\n\nAdministration", array( '@name' => $params['name'], '@comment' => $params['comment'] ) );
+      break;
+    case 'excursion_t_accept':
+      break;
+    case 'excursion_g_decline':
+      break;
+    case 'excursion_t_decline':
+      break;
+    case 'excursion_g_cancel_t':
+      break;
+    case 'excursion_t_cancel_t':
+      break;
+    case 'excursion_g_cancel_g':
+      break;
+    case 'excursion_t_cancel_g':
+      break;
+    case 'excursion_g_vote_t':
+      break;
+    case 'excursion_t_vote_t':
+      break;
+    case 'excursion_g_vote_g':
+      break;
+    case 'excursion_t_vote_g':
+      break;
+  }
+
+  $message['subject'] = $subj;
+  $message['body'][] = $body;
+}

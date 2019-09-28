@@ -1,0 +1,63 @@
+name = 'Smilee'
+description = 'Smilee is a HTML5/CSS3 template for corporate and portfolio sites.'
+package = 'Core'
+version = 'VERSION'
+core = '7.x'
+screenshot = 'screenshot.png'
+
+;add css
+stylesheets[all][] = css/font-awesome/css/font-awesome.css
+stylesheets[all][] = css/bootstrap.min.css
+stylesheets[all][] = js/vendors/isotope/isotope.css
+stylesheets[all][] = js/vendors/slick/slick.css
+stylesheets[all][] = js/vendors/rs-plugin/css/settings.css
+stylesheets[all][] = js/vendors/select/jquery.selectBoxIt.css
+stylesheets[all][] = css/subscribe-better.css
+stylesheets[all][] = js/vendors/vmenu/styles.css
+stylesheets[all][] = css/style.css
+stylesheets[all][] = css/update.css
+
+
+; add js
+scripts[]= js/jquery.js
+scripts[]= js/addthis_widget.js
+scripts[]= js/bootstrap.min.js
+scripts[]= js/bs-navbar.js
+scripts[]= js/vendors/isotope/isotope.pkgd.js
+scripts[]= js/vendors/slick/slick.min.js
+scripts[]= js/vendors/tweets/tweecool.min.js
+scripts[]= js/vendors/rs-plugin/js/jquery.themepunch.revolution.min.js
+scripts[]= js/vendors/rs-plugin/js/jquery.themepunch.tools.min.js
+scripts[]= js/jquery.sticky.js
+scripts[]= js/jquery.subscribe-better.js
+scripts[]= js/jquery-ui.min.js
+;scripts[]= js/vendors/select/jquery.selectBoxIt.min.js
+
+scripts[]= js/main.js
+scripts[]= js/update.js
+scripts[]= js/vendors/vmenu/script.js
+;Core regions
+
+regions[user_menu]     = 'User menu'
+regions[main_menu]     = 'Main menu'
+regions[menu_style_2]  = 'Menu style 2'
+regions[shopping_cart] = 'Shopping cart'
+regions[search]        = 'Search'
+regions[header]        = 'Header'
+regions[slider]        = 'Slider'
+regions[content]       = 'Main content'
+regions[sidebar]       = 'Sidebar'
+regions[section]       = 'Section content'
+regions[footer_first]  = 'First footer'
+regions[footer_second] = 'Second footer'
+regions[footer_third]  = 'Third footer'
+regions[footer_fourth] = 'Fourth footer'
+regions[footer]   = 'Footer'
+
+;regions[newsletter] = 'Newsletter'
+regions[modal] = 'Modal'
+
+
+
+
+
